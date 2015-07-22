@@ -4,17 +4,17 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      DataFilter.java
- * Create on:      2015/7/21 0021 11:14
+ * File name:      FileDownloadException.java
+ * Create on:      2015/7/22 0022 11:01
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/21 0021 11:14               	    袁其亮					    Create
+ * 2015/7/22 0022 11:01               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.filter;
+package cn.com.bestpay.batch.commons.exception;
 
 
-public class DataFilter {
+public class FileDownloadException {
 }

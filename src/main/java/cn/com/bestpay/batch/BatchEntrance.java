@@ -23,6 +23,7 @@ public class BatchEntrance extends AbstractIdleService {
     //private final static Logger logger = LoggerFactory.getLogger(BatchEntrance.class);
     private ClassPathXmlApplicationContext context;
     public static void main(String[] args) {
+
         BatchEntrance batchEntrance = new BatchEntrance();
         batchEntrance.startAsync();
         try {

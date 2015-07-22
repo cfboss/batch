@@ -4,17 +4,19 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      ExceptionProcessFilter.java
- * Create on:      2015/7/22 0022 10:45
+ * File name:      Filter.java
+ * Create on:      2015/7/22 0022 10:58
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/22 0022 10:45               	    袁其亮					    Create
+ * 2015/7/22 0022 10:58               	    袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch.commons.filter;
 
+import cn.com.bestpay.batch.commons.context.BatchContext;
 
-public class ExceptionProcessFilter {
+public interface Filter {
+    void doFilter(BatchContext batchContext,FilterChain chain);
 }

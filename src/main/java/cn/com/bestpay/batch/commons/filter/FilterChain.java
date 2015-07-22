@@ -4,19 +4,20 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      CommonPreProcessor.java
- * Create on:      2015/7/16 8:56
+ * File name:      FilterChain.java
+ * Create on:      2015/7/22 0022 10:59
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/16 8:56               	    袁其亮					    Create
+ * 2015/7/22 0022 10:59               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.job.init;
+package cn.com.bestpay.batch.commons.filter;
 
 
-import java.util.logging.Filter;
+import cn.com.bestpay.batch.commons.context.BatchContext;
 
-public class CommonPreProcessor {
+public interface FilterChain {
+    void doFilter(BatchContext batchContext);
 }
