@@ -9,9 +9,9 @@ http://www.springframework.org/schema/batch/spring-batch-3.0.xsd">
     <bean:import resource="spring-batch.xml"/>
 
     <!--job-repository 默认 jobRepository restartable 默认true  abstract默认false-->
-    <job id="fileBatchJob" job-repository="jobRepository" restartable="true" abstract="false" >
-
-    </job>
+    <!--<job id="fileBatchJob" job-repository="jobRepository" restartable="true" abstract="false" >
+        <step id=""
+    </job>-->
 
 
 

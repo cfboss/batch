@@ -15,8 +15,9 @@
  ************************************************************************************/
 package cn.com.bestpay.batch.commons.filter;
 
-import cn.com.bestpay.batch.commons.context.BatchContext;
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.exception.BatchException;
 
 public interface Filter {
-    void doFilter(BatchContext batchContext,FilterChain chain);
+    void doFilter(ConfigAttribute configAttribute,FilterChain chain) throws BatchException;
 }

@@ -17,4 +17,33 @@ package cn.com.bestpay.batch.commons.config;
 
 
 public class ConfigAttribute {
+    private FtpConfigAttribute ftpConfigAttribute;
+    private FileConfigAttribute fileConfigAttribute;
+    private String message;
+
+    public FtpConfigAttribute getFtpConfigAttribute() {
+        return ftpConfigAttribute;
+    }
+
+    public void setFtpConfigAttribute(FtpConfigAttribute ftpConfigAttribute) {
+        this.ftpConfigAttribute = ftpConfigAttribute;
+    }
+
+    public FileConfigAttribute getFileConfigAttribute() {
+        return fileConfigAttribute;
+    }
+
+    public void setFileConfigAttribute(FileConfigAttribute fileConfigAttribute) {
+        this.fileConfigAttribute = fileConfigAttribute;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+
 }

@@ -11,4 +11,30 @@
         <property name="jobRepository" ref="jobRepository"/>
     </bean>
     <bean id="batchTransactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+
+    <!--初始化过滤器链-->
+    <bean id="batchFilter" class="cn.com.bestpay.batch.commons.filter.GenericFilterChain">
+        <constructor-arg name="additionalFilters">
+            <list>
+                <ref bean="logFilter"/>
+                <ref bean="exceptionFilter"/>
+                <ref bean="messageFilter"/>
+                <ref bean="contextPersistenceFilter"/>
+                <ref bean="ftpProcessFilter"/>
+                <ref bean="fileProcessFilter"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="chain" ref="jobExecutionFilterChain"/>
+    </bean>
+
+    <bean id="logFilter"                class="cn.com.bestpay.batch.commons.filter.impl.LogFilter"/>
+    <bean id="exceptionFilter"          class="cn.com.bestpay.batch.commons.filter.impl.ExceptionProcessFilter"/>
+    <bean id="messageFilter"            class="cn.com.bestpay.batch.commons.filter.impl.MessageFilter"/>
+    <bean id="contextPersistenceFilter" class="cn.com.bestpay.batch.commons.filter.impl.ContextPersistenceFilter"/>
+    <bean id="ftpProcessFilter"         class="cn.com.bestpay.batch.commons.filter.impl.FtpProcessFilter"/>
+    <bean id="fileProcessFilter"        class="cn.com.bestpay.batch.commons.filter.impl.FileProcessFilter"/>
+    <bean id="jobExecutionFilterChain"  class="cn.com.bestpay.batch.commons.filter.impl.JobExecutionFilterChain">
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+
 </beans>

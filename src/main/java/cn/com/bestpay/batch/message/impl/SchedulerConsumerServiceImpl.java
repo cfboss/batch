@@ -15,17 +15,23 @@
  ************************************************************************************/
 package cn.com.bestpay.batch.message.impl;
 
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.config.FileConfigAttribute;
+import cn.com.bestpay.batch.commons.config.FtpConfigAttribute;
+import cn.com.bestpay.batch.commons.filter.GenericFilterChain;
 import cn.com.bestpay.batch.message.ISchedulerConsumerService;
 import cn.com.bestpay.batch.message.vo.Response;
-import cn.com.bestpay.batch.service.IJobLauncher;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Service
-public class SchedulerConsumerServiceImpl implements ISchedulerConsumerService{
+public class SchedulerConsumerServiceImpl implements ISchedulerConsumerService {
     @Resource
-    private IJobLauncher jobLauncher;
+    private JobLauncher jobLauncher;
+    @Resource
+    private GenericFilterChain batchFilter;
 
     /**
      * 启动批处理任务
@@ -33,7 +39,16 @@ public class SchedulerConsumerServiceImpl implements ISchedulerConsumerService{
      */
     @Override
     public Response<String> consume(String jobInstanceId) {
-        jobLauncher.start(jobInstanceId);
+        //从数据库获取初始化数据
+        // todo
+        FtpConfigAttribute ftpConfigAttribute = new FtpConfigAttribute();
+        FileConfigAttribute fileConfigAttribute = new FileConfigAttribute();
+        ConfigAttribute configAttribute = new ConfigAttribute();
+        configAttribute.setFileConfigAttribute(fileConfigAttribute);
+        configAttribute.setFtpConfigAttribute(ftpConfigAttribute);
+        batchFilter.doFilter(configAttribute);
+
+
         return null;
     }
 }

@@ -28,10 +28,10 @@
     <tx:annotation-driven/>
 
     <!--持久化相关的配置-->
-    <import resource="dubbo-interface.xml"/>
-    <!--<import resource="spring-persistence.xml"/>-->
-    <!--<import resource="spring-batch.xml"/>-->
-    <!--<import resource="spring-batch-job.xml"/>-->
+    <!--<import resource="dubbo-interface.xml"/>-->
+    <import resource="spring-persistence.xml"/>
+    <import resource="spring-batch.xml"/>
+    <import resource="spring-batch-job.xml"/>
 
 
 </beans>

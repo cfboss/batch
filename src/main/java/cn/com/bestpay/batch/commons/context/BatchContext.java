@@ -16,5 +16,25 @@
 package cn.com.bestpay.batch.commons.context;
 
 
-public class BatchContext {
+import com.google.common.collect.Maps;
+
+import java.util.Map;
+
+public class BatchContext implements Context{
+    private Map<String,Object> map = Maps.newHashMap();
+    @Override
+    public Object get(String key) {
+        return map.get(key);
+    }
+
+    @Override
+    public void save(String key, Object value) {
+        map.put(key,value);
+    }
+
+    @Override
+    public void remove(String key) {
+        map.remove(key);
+    }
+
 }

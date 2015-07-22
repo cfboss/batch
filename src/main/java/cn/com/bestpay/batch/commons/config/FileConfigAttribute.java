@@ -16,5 +16,133 @@
 package cn.com.bestpay.batch.commons.config;
 
 
+import cn.com.bestpay.batch.commons.constant.Constant;
+
+import java.util.Date;
+
 public class FileConfigAttribute {
+    private String fileKey;
+    private String fileName;
+    private String fileReturnName;
+    private long fileSize;
+    private long fileReturnSize;
+    private long rowTotalCount;
+    private long rowSuccessCount;
+    private long rowFailCount;
+    private long rowSkipCount;
+    private Date fileCreateDate;
+    private boolean fileReturn;
+
+    public String getFileKey() {
+        return fileKey;
+    }
+
+    public void setFileKey(String fileKey) {
+        this.fileKey = fileKey;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileReturnName() {
+        return fileReturnName;
+    }
+
+    public void setFileReturnName(String fileReturnName) {
+        this.fileReturnName = fileReturnName;
+    }
+
+    public long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public long getFileReturnSize() {
+        return fileReturnSize;
+    }
+
+    public void setFileReturnSize(long fileReturnSize) {
+        this.fileReturnSize = fileReturnSize;
+    }
+
+    public long getRowTotalCount() {
+        return rowTotalCount;
+    }
+
+    public void setRowTotalCount(long rowTotalCount) {
+        this.rowTotalCount = rowTotalCount;
+    }
+
+    public long getRowSuccessCount() {
+        return rowSuccessCount;
+    }
+
+    public void setRowSuccessCount(long rowSuccessCount) {
+        this.rowSuccessCount = rowSuccessCount;
+    }
+
+    public long getRowFailCount() {
+        return rowFailCount;
+    }
+
+    public void setRowFailCount(long rowFailCount) {
+        this.rowFailCount = rowFailCount;
+    }
+
+    public long getRowSkipCount() {
+        return rowSkipCount;
+    }
+
+    public void setRowSkipCount(long rowSkipCount) {
+        this.rowSkipCount = rowSkipCount;
+    }
+
+    public Date getFileCreateDate() {
+        return fileCreateDate;
+    }
+
+    public void setFileCreateDate(Date fileCreateDate) {
+        this.fileCreateDate = fileCreateDate;
+    }
+
+    public boolean isFileReturn() {
+        return fileReturn;
+    }
+
+    public void setFileReturn(boolean fileReturn) {
+        this.fileReturn = fileReturn;
+    }
+
+    public String fileInitData(){
+        StringBuffer sb = new StringBuffer(Constant.Symbol.ENTER);
+        sb.append("文件标识:"+fileKey).append(Constant.Symbol.ENTER)
+                .append("文件名:"+fileName).append(Constant.Symbol.ENTER)
+                .append("文件大小:"+fileSize).append(Constant.Symbol.ENTER)
+                .append("文件总条目数:"+rowTotalCount);
+        return sb.toString();
+    }
+
+    public String fileFinishData(){
+        StringBuffer sb = new StringBuffer(Constant.Symbol.ENTER);
+        sb.append("文件标识:"+fileKey).append(Constant.Symbol.ENTER);
+        if (fileReturn){
+            sb.append("回盘文件名: " + fileName).append(Constant.Symbol.ENTER)
+                    .append("回盘文件大小: " + fileSize).append(Constant.Symbol.ENTER);
+        }
+
+        sb.append("文件总条目数:  " + rowTotalCount)
+                .append("文件处理成功条目数： " + rowSuccessCount).append(Constant.Symbol.ENTER)
+                .append("文件处理失败条目数:  " + rowFailCount).append(Constant.Symbol.ENTER)
+                .append("文件处理跳过条目数:  " + rowSkipCount).append(Constant.Symbol.ENTER);
+        return sb.toString();
+    }
+
 }

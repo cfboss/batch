@@ -16,7 +16,9 @@
 package cn.com.bestpay.batch.commons.filter;
 
 
-import cn.com.bestpay.batch.commons.context.BatchContext;
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.exception.BatchException;
+
 import java.util.List;
 
 public class GenericFilterChain implements FilterChain {
@@ -32,13 +34,13 @@ public class GenericFilterChain implements FilterChain {
     }
 
     @Override
-    public void doFilter(BatchContext batchContext) {
+    public void doFilter(ConfigAttribute configAttribute) throws BatchException {
         if (currentPosition == size) {
-            originalChain.doFilter(batchContext);
+            originalChain.doFilter(configAttribute);
         } else {
             currentPosition++;
             Filter nextFilter = additionalFilters.get(currentPosition - 1);
-            nextFilter.doFilter(batchContext, this);
+            nextFilter.doFilter(configAttribute, this);
         }
     }
 }

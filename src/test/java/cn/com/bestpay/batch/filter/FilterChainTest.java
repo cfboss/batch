@@ -18,7 +18,7 @@ package cn.com.bestpay.batch.filter;
 
 import cn.com.bestpay.batch.commons.context.BatchContext;
 import cn.com.bestpay.batch.commons.filter.GenericFilterChain;
-import cn.com.bestpay.batch.commons.filter.JobExecutionFilterChain;
+import cn.com.bestpay.batch.commons.filter.impl.JobExecutionFilterChain;
 import cn.com.bestpay.batch.commons.filter.impl.ContextPersistenceFilter;
 import cn.com.bestpay.batch.commons.filter.impl.ExceptionProcessFilter;
 import cn.com.bestpay.batch.commons.filter.impl.FileProcessFilter;
@@ -45,6 +45,6 @@ public class FilterChainTest {
         list.add(contextPersistenceFilter);
         list.add(fileProcessFilter);
         GenericFilterChain genericFilterChain = new GenericFilterChain(jobChain,list);
-        genericFilterChain.doFilter(new BatchContext());
+        //genericFilterChain.doFilter(new BatchContext());
     }
 }

@@ -16,15 +16,27 @@
 package cn.com.bestpay.batch.commons.filter.impl;
 
 
-import cn.com.bestpay.batch.commons.context.BatchContext;
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.exception.*;
 import cn.com.bestpay.batch.commons.filter.Filter;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
 
 public class ExceptionProcessFilter implements Filter{
     @Override
-    public void doFilter(BatchContext batchContext, FilterChain chain) {
-        System.out.println("ExceptionProcessFilter before");
-        chain.doFilter(batchContext);
-        System.out.println("ExceptionProcessFilter after");
+    public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
+        try {
+            chain.doFilter(configAttribute);
+        } catch (FileDownloadException e){
+
+        } catch (HeaderValidateException e){
+
+        } catch (RowMapperException e){
+
+        } catch (RowValidateException e) {
+
+        } catch (Exception e){
+
+        }
+
     }
 }

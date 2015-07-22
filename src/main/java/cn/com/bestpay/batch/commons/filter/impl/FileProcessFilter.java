@@ -16,15 +16,21 @@
 package cn.com.bestpay.batch.commons.filter.impl;
 
 
-import cn.com.bestpay.batch.commons.context.BatchContext;
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.exception.BatchException;
 import cn.com.bestpay.batch.commons.filter.Filter;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FileProcessFilter implements Filter{
+    private Logger logger = LoggerFactory.getLogger(getClass());
     @Override
-    public void doFilter(BatchContext batchContext, FilterChain chain) {
-        System.out.println("fileProcess before");
-        chain.doFilter(batchContext);
-        System.out.println("fileProcess after");
+    public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
+        //对文件的统计 包括文件数 文件大小等
+        //todo
+        logger.info("开始对需要处理的文件进行统计");
+        chain.doFilter(configAttribute);
+        logger.info("开始进行回盘文件进行统计");
     }
 }
