@@ -16,9 +16,14 @@
 package cn.com.bestpay.batch.commons.config;
 
 
+import java.util.List;
+import java.util.Map;
+
 public class ConfigAttribute {
     private FtpConfigAttribute ftpConfigAttribute;
-    private FileConfigAttribute fileConfigAttribute;
+    private List<FileConfigAttribute> fileConfigAttribute;
+    private Map<String,String> fileMap;
+    private boolean fileReturn;
     private String message;
 
     public FtpConfigAttribute getFtpConfigAttribute() {
@@ -29,12 +34,28 @@ public class ConfigAttribute {
         this.ftpConfigAttribute = ftpConfigAttribute;
     }
 
-    public FileConfigAttribute getFileConfigAttribute() {
+    public List<FileConfigAttribute> getFileConfigAttribute() {
         return fileConfigAttribute;
     }
 
-    public void setFileConfigAttribute(FileConfigAttribute fileConfigAttribute) {
+    public Map<String, String> getFileMap() {
+        return fileMap;
+    }
+
+    public void setFileMap(Map<String, String> fileMap) {
+        this.fileMap = fileMap;
+    }
+
+    public void setFileConfigAttribute(List<FileConfigAttribute> fileConfigAttribute) {
         this.fileConfigAttribute = fileConfigAttribute;
+    }
+
+    public boolean isFileReturn() {
+        return fileReturn;
+    }
+
+    public void setFileReturn(boolean fileReturn) {
+        this.fileReturn = fileReturn;
     }
 
     public String getMessage() {

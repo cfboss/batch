@@ -18,5 +18,9 @@
 
 package cn.com.bestpay.batch.commons.strategy;
 
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.exception.BatchException;
+
 public interface BatchStrategy {
+    void strategy(ConfigAttribute configAttribute) throws BatchException;
 }

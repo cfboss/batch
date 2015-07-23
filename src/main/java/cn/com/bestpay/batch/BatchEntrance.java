@@ -17,10 +17,12 @@ package cn.com.bestpay.batch;
 
 
 import com.google.common.util.concurrent.AbstractIdleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BatchEntrance extends AbstractIdleService {
-    //private final static Logger logger = LoggerFactory.getLogger(BatchEntrance.class);
+    private final static Logger logger = LoggerFactory.getLogger(BatchEntrance.class);
     private ClassPathXmlApplicationContext context;
     public static void main(String[] args) {
 
@@ -34,7 +36,7 @@ public class BatchEntrance extends AbstractIdleService {
                 }
             }
         } catch (InterruptedException ex) {
-            //logger.error("ignore interruption");
+            logger.error("ignore interruption");
         }
         System.out.println("启动成功");
     }
@@ -44,11 +46,11 @@ public class BatchEntrance extends AbstractIdleService {
      */
     @Override
     protected void startUp() throws Exception {
-        //logger.info("batch service init");
+        logger.info("batch service init");
         context = new ClassPathXmlApplicationContext(new String[] { "spring-config.xml" });
         context.start();
         context.registerShutdownHook();
-        //logger.info("batch service started successfully");
+        logger.info("batch service started successfully");
 
     }
 
@@ -58,6 +60,6 @@ public class BatchEntrance extends AbstractIdleService {
     @Override
     protected void shutDown() throws Exception {
         context.stop();
-        //logger.info("batch service stopped successfully");
+        logger.info("batch service stopped successfully");
     }
 }

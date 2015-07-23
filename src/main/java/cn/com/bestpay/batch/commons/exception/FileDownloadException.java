@@ -17,4 +17,7 @@ package cn.com.bestpay.batch.commons.exception;
 
 
 public class FileDownloadException extends BatchException {
+    public FileDownloadException(String message){
+        super(message);
+    }
 }

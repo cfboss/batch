@@ -24,6 +24,7 @@ public class FileConfigAttribute {
     private String fileKey;
     private String fileName;
     private String fileReturnName;
+    private String directory;
     private long fileSize;
     private long fileReturnSize;
     private long rowTotalCount;
@@ -119,6 +120,14 @@ public class FileConfigAttribute {
 
     public void setFileReturn(boolean fileReturn) {
         this.fileReturn = fileReturn;
+    }
+
+    public String getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(String directory) {
+        this.directory = directory;
     }
 
     public String fileInitData(){

@@ -4,20 +4,20 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      DataValidateException.java
- * Create on:      2015/7/21 0021 13:39
+ * File name:      FtpException.java
+ * Create on:      2015/7/23 0023 9:14
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/21 0021 13:39               	    袁其亮					    Create
+ * 2015/7/23 0023 9:14               	    袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch.commons.exception;
 
 
-public class RowValidateException extends BatchException{
-    public RowValidateException(String message){
+public class FtpException extends BatchException{
+    public FtpException(String message){
         super(message);
     }
 }

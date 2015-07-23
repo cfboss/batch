@@ -36,5 +36,4 @@
     <bean id="jobExecutionFilterChain"  class="cn.com.bestpay.batch.commons.filter.impl.JobExecutionFilterChain">
         <property name="jobLauncher" ref="jobLauncher"/>
     </bean>
-
 </beans>

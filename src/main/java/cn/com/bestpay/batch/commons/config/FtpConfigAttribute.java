@@ -16,6 +16,8 @@
 package cn.com.bestpay.batch.commons.config;
 
 
+import java.util.List;
+
 public class FtpConfigAttribute {
     public static int MODE_POSITIVE = 0;
     public static int MODE_NEGATIVE = 1;
@@ -23,8 +25,19 @@ public class FtpConfigAttribute {
     private int port;
     private String username;
     private String password;
-    private String directory;
+    private String serverPath;
+    private String localPath;
+    private List<String> fileNames;
+    /**
+     * ftp 类型 0:ftp 1:sftp
+     */
+    private int ftpType;
+    /**
+     * 传输模式 0:被动模式 1:主动模式
+     */
     private int ftpMode;
+
+    private boolean isDownload;
 
     public String getAddress() {
         return address;
@@ -58,12 +71,36 @@ public class FtpConfigAttribute {
         this.password = password;
     }
 
-    public String getDirectory() {
-        return directory;
+    public String getServerPath() {
+        return serverPath;
     }
 
-    public void setDirectory(String directory) {
-        this.directory = directory;
+    public void setServerPath(String serverPath) {
+        this.serverPath = serverPath;
+    }
+
+    public String getLocalPath() {
+        return localPath;
+    }
+
+    public void setLocalPath(String localPath) {
+        this.localPath = localPath;
+    }
+
+    public List<String> getFileNames() {
+        return fileNames;
+    }
+
+    public void setFileNames(List<String> fileNames) {
+        this.fileNames = fileNames;
+    }
+
+    public int getFtpType() {
+        return ftpType;
+    }
+
+    public void setFtpType(int ftpType) {
+        this.ftpType = ftpType;
     }
 
     public int getFtpMode() {
@@ -74,15 +111,12 @@ public class FtpConfigAttribute {
         this.ftpMode = ftpMode;
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("FtpConfigAttribute{");
-        sb.append("address='").append(address).append('\'');
-        sb.append(", port=").append(port);
-        sb.append(", username='").append(username).append('\'');
-        sb.append(", directory='").append(directory).append('\'');
-        sb.append(", ftpMode=").append(ftpMode);
-        sb.append('}');
-        return sb.toString();
+    public boolean isDownload() {
+        return isDownload;
     }
+
+    public void setDownload(boolean isDownload) {
+        this.isDownload = isDownload;
+    }
+
 }

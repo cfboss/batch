@@ -20,14 +20,19 @@ import cn.com.bestpay.batch.commons.config.ConfigAttribute;
 import cn.com.bestpay.batch.commons.exception.BatchException;
 import cn.com.bestpay.batch.commons.filter.Filter;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MessageFilter implements Filter {
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
 
     @Override
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
-        System.out.println("MessageFilter before");
+        logger.info("接收到处理请求,请求信息:{}",configAttribute.getMessage());
+        // todo 请求消息进行加工
         chain.doFilter(configAttribute);
-        System.out.println("MessageFilter after");
+        // todo 响应消息进行加工
+        logger.info("完成处理请求,响应信息:{}", configAttribute.getMessage());
     }
 }

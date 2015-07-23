@@ -1,5 +1,3 @@
-package cn.com.bestpay.batch.service;
-
 /**
  * *********************************************************************************
  * Copyright (c) 2015 © Bestpay Co., Ltd.  All Rights Reserved.
@@ -17,6 +15,9 @@ package cn.com.bestpay.batch.service;
  * 2015/7/16 15:28               	    袁其亮					    Create
  * **********************************************************************************
  */
+
+package cn.com.bestpay.batch.service;
+
 public interface IJobLauncher {
     public void start(String id);
     public void pause(String id);

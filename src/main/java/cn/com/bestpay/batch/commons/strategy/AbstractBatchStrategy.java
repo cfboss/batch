@@ -16,5 +16,5 @@
 package cn.com.bestpay.batch.commons.strategy;
 
 
-public abstract class AbstractBatchStrategy {
+public abstract class AbstractBatchStrategy implements BatchStrategy{
 }

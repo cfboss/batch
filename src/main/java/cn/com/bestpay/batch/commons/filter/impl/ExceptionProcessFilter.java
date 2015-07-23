@@ -20,22 +20,35 @@ import cn.com.bestpay.batch.commons.config.ConfigAttribute;
 import cn.com.bestpay.batch.commons.exception.*;
 import cn.com.bestpay.batch.commons.filter.Filter;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ExceptionProcessFilter implements Filter{
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Override
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
+        // todo 将异常信息持久化到数据库
         try {
             chain.doFilter(configAttribute);
+        } catch (FtpException e){
+            logger.error("Ftp 连接出现异常");
+            e.printStackTrace();
         } catch (FileDownloadException e){
-
+            logger.error("文件下载出现异常");
+            e.printStackTrace();
         } catch (HeaderValidateException e){
-
+            logger.error("文件头校验出现异常");
+            e.printStackTrace();
         } catch (RowMapperException e){
-
+            logger.error("文件行映射出现异常");
+            e.printStackTrace();
         } catch (RowValidateException e) {
-
-        } catch (Exception e){
-
+            logger.error("文件行校验出现异常");
+            e.printStackTrace();
+        } catch (BatchException e){
+            logger.error("批处理出现未知异常");
+            e.printStackTrace();
         }
 
     }

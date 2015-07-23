@@ -37,9 +37,8 @@ public class ContextPersistenceFilter implements Filter{
         } finally {
             //持久化Context到数据库并清除环境
             // todo
+            System.out.println(batchContext.get("test"));
             BatchContextHolder.removeBatchContext();
-
         }
-
     }
 }

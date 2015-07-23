@@ -17,6 +17,7 @@ package cn.com.bestpay.batch.commons.filter.impl;
 
 
 import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.config.FileConfigAttribute;
 import cn.com.bestpay.batch.commons.exception.BatchException;
 import cn.com.bestpay.batch.commons.filter.Filter;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
@@ -29,10 +30,19 @@ public class LogFilter implements Filter{
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
         logger.info("开始处理对账任务,信息:{}", configAttribute.getMessage());
         logger.info("记录FTP信息:{}",configAttribute.getFtpConfigAttribute());
-        logger.info("记录文件信息:{}",configAttribute.getFileConfigAttribute().fileInitData());
+        logger.info("记录文件信息,文件数量:{}",configAttribute.getFileConfigAttribute().size());
+        for (FileConfigAttribute fc : configAttribute.getFileConfigAttribute()){
+            logger.info("记录文件信息:{}",fc.fileInitData());
+        }
+
         chain.doFilter(configAttribute);
+
+        logger.info("记录文件信息,文件数量:{}",configAttribute.getFileConfigAttribute().size());
+        for (FileConfigAttribute fc : configAttribute.getFileConfigAttribute()){
+            logger.info("记录文件信息:{}",fc.fileFinishData());
+        }
+        logger.info("记录文件信息:{}",configAttribute.getFileConfigAttribute().size());
         logger.info("完成对账任务处理,信息:{},开始统计本次处理的数据信息", configAttribute.getMessage());
-        logger.info("记录FTP信息:{}",configAttribute.getFtpConfigAttribute());
-        logger.info("记录文件信息:{}",configAttribute.getFileConfigAttribute().fileFinishData());
+
     }
 }

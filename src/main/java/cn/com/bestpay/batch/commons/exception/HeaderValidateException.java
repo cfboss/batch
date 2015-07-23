@@ -17,4 +17,7 @@ package cn.com.bestpay.batch.commons.exception;
 
 
 public class HeaderValidateException extends BatchException{
+    public HeaderValidateException(String message){
+        super(message);
+    }
 }

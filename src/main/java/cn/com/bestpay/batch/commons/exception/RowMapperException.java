@@ -17,4 +17,7 @@ package cn.com.bestpay.batch.commons.exception;
 
 
 public class RowMapperException extends BatchException{
+    public RowMapperException(String message){
+        super(message);
+    }
 }

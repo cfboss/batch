@@ -4,17 +4,20 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      FtpPositiveStrategy.java
- * Create on:      2015/7/21 0021 11:12
+ * File name:      FileProcessException.java
+ * Create on:      2015/7/23 0023 12:31
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/21 0021 11:12               	    袁其亮					    Create
+ * 2015/7/23 0023 12:31               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.strategy.ftp;
+package cn.com.bestpay.batch.commons.exception;
 
 
-public class FtpPositiveStrategy {
+public class FileProcessException extends BatchException{
+    public FileProcessException(String message){
+        super(message);
+    }
 }
