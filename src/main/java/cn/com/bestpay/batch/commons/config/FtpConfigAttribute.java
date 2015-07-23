@@ -119,4 +119,19 @@ public class FtpConfigAttribute {
         this.isDownload = isDownload;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("FtpConfigAttribute{");
+        sb.append("address='").append(address).append('\'');
+        sb.append(", port=").append(port);
+        sb.append(", username='").append(username).append('\'');
+        sb.append(", serverPath='").append(serverPath).append('\'');
+        sb.append(", localPath='").append(localPath).append('\'');
+        sb.append(", fileNames=").append(fileNames);
+        sb.append(", ftpType=").append(ftpType);
+        sb.append(", ftpMode=").append(ftpMode);
+        sb.append(", isDownload=").append(isDownload);
+        sb.append('}');
+        return sb.toString();
+    }
 }

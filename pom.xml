@@ -247,6 +247,9 @@
             <properties>
                 <env>native</env>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
 
             <build>
                 <filters>
@@ -271,9 +274,7 @@
             <properties>
                 <env>production</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+
 
             <build>
                 <filters>
