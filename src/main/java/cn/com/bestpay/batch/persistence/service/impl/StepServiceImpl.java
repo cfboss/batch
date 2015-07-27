@@ -11,17 +11,27 @@
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/16 0016 16:16               	    袁其亮					    Create
+ * 2015/7/16 0016 16:16               	袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch.persistence.service.impl;
 
 
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
+import cn.com.bestpay.batch.persistence.model.StepExecutionContextPO;
+import cn.com.bestpay.batch.persistence.model.StepExecutionPO;
+import cn.com.bestpay.batch.persistence.service.IStepService;
 
-public class StepServiceImpl {
-    @Override
-    public String toString() {
-        //SimpleJobLauncher
-        return super.toString();
+import java.util.List;
+
+public class StepServiceImpl implements IStepService{
+    public List<StepExecutionPO> getStepsByJobId(String jobId){
+        return null;
+    }
+
+    public List<StepExecutionPO> getStepParams(String stepId){
+        return null;
+    }
+
+    public List<StepExecutionContextPO> getStepContext(String stepId){
+        return null;
     }
 }

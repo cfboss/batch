@@ -21,6 +21,7 @@ import cn.com.bestpay.batch.commons.config.FileConfigAttribute;
 import cn.com.bestpay.batch.commons.context.BatchContext;
 import cn.com.bestpay.batch.commons.exception.BatchException;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
+import cn.com.bestpay.batch.service.IJobLauncher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -30,12 +31,13 @@ import java.util.List;
 public class JobExecutionFilterChain implements FilterChain {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private JobLauncher jobLauncher;
+    private IJobLauncher jobLauncher;
     @Override
     public void doFilter(ConfigAttribute configAttribute) throws BatchException {
         logger.info("开始文件处理");
         // 处理文件 调用spring batch框架进行处理
         // todo
+        jobLauncher.start(configAttribute);
         //jobLauncher.run()
         List<FileConfigAttribute> configAttributes = configAttribute.getFileConfigAttribute();
         for (FileConfigAttribute config: configAttributes){
@@ -44,7 +46,7 @@ public class JobExecutionFilterChain implements FilterChain {
         logger.info("文件处理完成");
     }
 
-    public void setJobLauncher(JobLauncher jobLauncher) {
+    public void setJobLauncher(IJobLauncher jobLauncher) {
         this.jobLauncher = jobLauncher;
     }
 }

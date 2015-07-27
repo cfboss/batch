@@ -4,19 +4,17 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      FileDownloadException.java
- * Create on:      2015/7/22 0022 11:01
+ * File name:      CommonFlatFileWriter.java
+ * Create on:      2015/7/16 8:55
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/22 0022 11:01               	    袁其亮					    Create
+ * 2015/7/16 8:55               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.exception;
+package cn.com.bestpay.batch.commons.step.writer;
 
-public class FileDownloadException extends BatchException {
-    public FileDownloadException(String message){
-        super(message);
-    }
+
+public class CommonFlatFileWriter {
 }

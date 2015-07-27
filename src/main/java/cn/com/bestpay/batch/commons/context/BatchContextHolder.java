@@ -17,7 +17,7 @@ package cn.com.bestpay.batch.commons.context;
 
 
 public class BatchContextHolder {
-    private static ThreadLocal<BatchContext> batchContextList = new ThreadLocal<BatchContext>();
+    private static final ThreadLocal<BatchContext> batchContextList = new ThreadLocal<BatchContext>();
     public static BatchContext getBatchContext(){
         return batchContextList.get();
     }

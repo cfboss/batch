@@ -13,7 +13,7 @@
  * Date									Editor						ChangeReasons
  * 2015/7/16 8:54               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.job.reader;
+package cn.com.bestpay.batch.commons.step.reader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.item.file.*;

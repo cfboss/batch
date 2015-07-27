@@ -16,17 +16,22 @@
 package cn.com.bestpay.batch.service.impl;
 
 
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.job.GenericFlatFileInvocation;
+import cn.com.bestpay.batch.persistence.model.JobInstancePO;
 import cn.com.bestpay.batch.service.IJobLauncher;
-import org.springframework.batch.core.launch.JobLauncher;
-
-import javax.annotation.Resource;
 
 public class JobLauncherImpl implements IJobLauncher {
-    @Resource
-    private  JobLauncher jobLauncher;
-    @Override
-    public void start(String id) {
 
+    private GenericFlatFileInvocation genericFlatFileInvocation;
+
+    @Override
+    public void start(ConfigAttribute configAttribute) {
+        if (configAttribute.getStepType().equals("0")){
+            genericFlatFileInvocation.run();
+        } else if (configAttribute.getStepType().equals("1")){
+
+        }
     }
 
     @Override
@@ -42,5 +47,9 @@ public class JobLauncherImpl implements IJobLauncher {
     @Override
     public void resume(String id) {
 
+    }
+
+    public void setGenericFlatFileInvocation(GenericFlatFileInvocation genericFlatFileInvocation) {
+        this.genericFlatFileInvocation = genericFlatFileInvocation;
     }
 }

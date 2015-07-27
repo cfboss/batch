@@ -3,8 +3,10 @@ package cn.com.bestpay.batch.persistence.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class JobExecutionParamsPO {
+public class StepExecutionParamsPO {
     private String id;
+
+    private String stepInstanceId;
 
     private String typeCd;
 
@@ -26,6 +28,14 @@ public class JobExecutionParamsPO {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getStepInstanceId() {
+        return stepInstanceId;
+    }
+
+    public void setStepInstanceId(String stepInstanceId) {
+        this.stepInstanceId = stepInstanceId == null ? null : stepInstanceId.trim();
     }
 
     public String getTypeCd() {

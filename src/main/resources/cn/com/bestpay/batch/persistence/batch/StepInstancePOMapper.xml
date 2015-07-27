@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.bestpay.batch.persistence.mapper.batch.StepInstancePOMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.bestpay.batch.persistence.model.StepInstancePO" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="DECIMAL" />
+    <result column="STEP_NAME" property="stepName" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="NEXT_STEP_ID" property="nextStepId" jdbcType="VARCHAR" />
+    <result column="CONDITION" property="condition" jdbcType="VARCHAR" />
+    <result column="JOB_INSTANCE_ID" property="jobInstanceId" jdbcType="VARCHAR" />
+    <result column="STEP_ORDER" property="stepOrder" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_UID" property="createUid" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_UID" property="updateUid" jdbcType="VARCHAR" />
+    <result column="CHECK_UID" property="checkUid" jdbcType="VARCHAR" />
+    <result column="CHECK_TIME" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="ARCHIVE_UID" property="archiveUid" jdbcType="VARCHAR" />
+    <result column="ARCHIVE_TIME" property="archiveTime" jdbcType="TIMESTAMP" />
+    <result column="CHECK_FLAG" property="checkFlag" jdbcType="VARCHAR" />
+    <result column="ARCHIVE_FLAG" property="archiveFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, VERSION, STEP_NAME, PARENT_ID, NEXT_STEP_ID, CONDITION, JOB_INSTANCE_ID, STEP_ORDER, 
+    CREATE_TIME, CREATE_UID, UPDATE_TIME, UPDATE_UID, CHECK_UID, CHECK_TIME, ARCHIVE_UID, 
+    ARCHIVE_TIME, CHECK_FLAG, ARCHIVE_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BATCH_STEP_INSTANCE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_BATCH_STEP_INSTANCE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.bestpay.batch.persistence.model.StepInstancePO" >
+    insert into T_BATCH_STEP_INSTANCE (ID, VERSION, STEP_NAME, 
+      PARENT_ID, NEXT_STEP_ID, CONDITION, 
+      JOB_INSTANCE_ID, STEP_ORDER, CREATE_TIME, 
+      CREATE_UID, UPDATE_TIME, UPDATE_UID, 
+      CHECK_UID, CHECK_TIME, ARCHIVE_UID, 
+      ARCHIVE_TIME, CHECK_FLAG, ARCHIVE_FLAG
+      )
+    values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=DECIMAL}, #{stepName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{nextStepId,jdbcType=VARCHAR}, #{condition,jdbcType=VARCHAR}, 
+      #{jobInstanceId,jdbcType=VARCHAR}, #{stepOrder,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUid,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUid,jdbcType=VARCHAR}, 
+      #{checkUid,jdbcType=VARCHAR}, #{checkTime,jdbcType=TIMESTAMP}, #{archiveUid,jdbcType=VARCHAR}, 
+      #{archiveTime,jdbcType=TIMESTAMP}, #{checkFlag,jdbcType=VARCHAR}, #{archiveFlag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.bestpay.batch.persistence.model.StepInstancePO" >
+    insert into T_BATCH_STEP_INSTANCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="stepName != null" >
+        STEP_NAME,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="nextStepId != null" >
+        NEXT_STEP_ID,
+      </if>
+      <if test="condition != null" >
+        CONDITION,
+      </if>
+      <if test="jobInstanceId != null" >
+        JOB_INSTANCE_ID,
+      </if>
+      <if test="stepOrder != null" >
+        STEP_ORDER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createUid != null" >
+        CREATE_UID,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateUid != null" >
+        UPDATE_UID,
+      </if>
+      <if test="checkUid != null" >
+        CHECK_UID,
+      </if>
+      <if test="checkTime != null" >
+        CHECK_TIME,
+      </if>
+      <if test="archiveUid != null" >
+        ARCHIVE_UID,
+      </if>
+      <if test="archiveTime != null" >
+        ARCHIVE_TIME,
+      </if>
+      <if test="checkFlag != null" >
+        CHECK_FLAG,
+      </if>
+      <if test="archiveFlag != null" >
+        ARCHIVE_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=DECIMAL},
+      </if>
+      <if test="stepName != null" >
+        #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="nextStepId != null" >
+        #{nextStepId,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null" >
+        #{condition,jdbcType=VARCHAR},
+      </if>
+      <if test="jobInstanceId != null" >
+        #{jobInstanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepOrder != null" >
+        #{stepOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUid != null" >
+        #{createUid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUid != null" >
+        #{updateUid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkUid != null" >
+        #{checkUid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archiveUid != null" >
+        #{archiveUid,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveTime != null" >
+        #{archiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkFlag != null" >
+        #{checkFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveFlag != null" >
+        #{archiveFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.bestpay.batch.persistence.model.StepInstancePO" >
+    update T_BATCH_STEP_INSTANCE
+    <set >
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=DECIMAL},
+      </if>
+      <if test="stepName != null" >
+        STEP_NAME = #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="nextStepId != null" >
+        NEXT_STEP_ID = #{nextStepId,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null" >
+        CONDITION = #{condition,jdbcType=VARCHAR},
+      </if>
+      <if test="jobInstanceId != null" >
+        JOB_INSTANCE_ID = #{jobInstanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepOrder != null" >
+        STEP_ORDER = #{stepOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUid != null" >
+        CREATE_UID = #{createUid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUid != null" >
+        UPDATE_UID = #{updateUid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkUid != null" >
+        CHECK_UID = #{checkUid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null" >
+        CHECK_TIME = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archiveUid != null" >
+        ARCHIVE_UID = #{archiveUid,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveTime != null" >
+        ARCHIVE_TIME = #{archiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkFlag != null" >
+        CHECK_FLAG = #{checkFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveFlag != null" >
+        ARCHIVE_FLAG = #{archiveFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.bestpay.batch.persistence.model.StepInstancePO" >
+    update T_BATCH_STEP_INSTANCE
+    set VERSION = #{version,jdbcType=DECIMAL},
+      STEP_NAME = #{stepName,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      NEXT_STEP_ID = #{nextStepId,jdbcType=VARCHAR},
+      CONDITION = #{condition,jdbcType=VARCHAR},
+      JOB_INSTANCE_ID = #{jobInstanceId,jdbcType=VARCHAR},
+      STEP_ORDER = #{stepOrder,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_UID = #{createUid,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_UID = #{updateUid,jdbcType=VARCHAR},
+      CHECK_UID = #{checkUid,jdbcType=VARCHAR},
+      CHECK_TIME = #{checkTime,jdbcType=TIMESTAMP},
+      ARCHIVE_UID = #{archiveUid,jdbcType=VARCHAR},
+      ARCHIVE_TIME = #{archiveTime,jdbcType=TIMESTAMP},
+      CHECK_FLAG = #{checkFlag,jdbcType=VARCHAR},
+      ARCHIVE_FLAG = #{archiveFlag,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

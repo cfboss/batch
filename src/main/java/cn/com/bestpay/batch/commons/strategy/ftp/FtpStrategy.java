@@ -32,7 +32,7 @@ import java.util.Set;
 
 public class FtpStrategy extends AbstractBatchStrategy{
     @Override
-    public void strategy(ConfigAttribute configAttribute) throws FtpException{
+    public Object strategy(ConfigAttribute configAttribute) throws FtpException{
         FtpConfigAttribute ftpConfigAttribute = configAttribute.getFtpConfigAttribute();
         if (ftpConfigAttribute.isDownload()){
             download(ftpConfigAttribute);
@@ -40,6 +40,7 @@ public class FtpStrategy extends AbstractBatchStrategy{
         }
 
         // todo 判断非空
+        return null;
 
     }
 

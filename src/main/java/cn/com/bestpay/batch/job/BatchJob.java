@@ -4,19 +4,20 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      CommonFlatFileProcessor.java
- * Create on:      2015/7/16 8:55
+ * File name:      BatchJob.java
+ * Create on:      2015/7/27 0027 16:21
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/16 8:55               	    袁其亮					    Create
+ * 2015/7/27 0027 16:21               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.job.processer;
+package cn.com.bestpay.batch.job;
 
-public class CommonFlatFileProcessor {
-    public static void main(String[] args) {
-        //JobLauncher jobLauncher
-    }
+
+import cn.com.bestpay.batch.commons.context.BatchContext;
+
+public interface BatchJob {
+    void batch(BatchContext batchContext);
 }

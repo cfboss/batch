@@ -14,8 +14,6 @@
  * 2015/7/16 15:13               	    袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch;
-
-
 import com.google.common.util.concurrent.AbstractIdleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

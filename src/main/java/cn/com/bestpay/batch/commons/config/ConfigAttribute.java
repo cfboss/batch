@@ -23,6 +23,9 @@ public class ConfigAttribute {
     private FtpConfigAttribute ftpConfigAttribute;
     private List<FileConfigAttribute> fileConfigAttribute;
     private Map<String,String> fileMap;
+    private String jobId;
+    private String stepType;
+    private int stepOrder;
     private boolean fileReturn;
     private String message;
 
@@ -66,5 +69,35 @@ public class ConfigAttribute {
         this.message = message;
     }
 
+    public String getJobId() {
+        return jobId;
+    }
 
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
+    }
+
+    public String getFileType() {
+        return stepType;
+    }
+
+    public void setFileType(String fileType) {
+        this.stepType = fileType;
+    }
+
+    public String getStepType() {
+        return stepType;
+    }
+
+    public void setStepType(String stepType) {
+        this.stepType = stepType;
+    }
+
+    public int getStepOrder() {
+        return stepOrder;
+    }
+
+    public void setStepOrder(int stepOrder) {
+        this.stepOrder = stepOrder;
+    }
 }

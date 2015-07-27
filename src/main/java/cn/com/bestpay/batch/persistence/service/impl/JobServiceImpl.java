@@ -15,6 +15,24 @@
  ************************************************************************************/
 package cn.com.bestpay.batch.persistence.service.impl;
 
+import cn.com.bestpay.batch.persistence.service.IJobService;
+import org.springframework.stereotype.Service;
 
-public class JobServiceImpl {
+@Service
+public class JobServiceImpl implements IJobService{
+    public void getJobInstance(String jobKey){
+
+    }
+
+    public void getJobParams(String jobId){
+
+    }
+
+    public void getJobContext(String jobId){
+
+    }
+
+
+
+
 }

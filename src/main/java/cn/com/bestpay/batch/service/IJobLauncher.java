@@ -18,8 +18,11 @@
 
 package cn.com.bestpay.batch.service;
 
+
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+
 public interface IJobLauncher {
-    public void start(String id);
+    public void start(ConfigAttribute configAttribute);
     public void pause(String id);
     public void stop(String id);
     public void resume(String id);

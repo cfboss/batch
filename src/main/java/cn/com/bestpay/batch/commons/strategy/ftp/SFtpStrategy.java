@@ -22,7 +22,7 @@ import cn.com.bestpay.batch.commons.strategy.AbstractBatchStrategy;
 public class SFtpStrategy extends AbstractBatchStrategy{
 
     @Override
-    public void strategy(ConfigAttribute ftpConfigAttribute) throws BatchException {
-
+    public Object strategy(ConfigAttribute ftpConfigAttribute) throws BatchException {
+        return null;
     }
 }

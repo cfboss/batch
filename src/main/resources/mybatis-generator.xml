@@ -36,12 +36,20 @@
         <table schema="" tableName="T_BATCH_JOB_INSTANCE" domainObjectName="JobInstancePO" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
+        <!--批处理步骤实例表-->
+        <table schema="" tableName="T_BATCH_STEP_INSTANCE" domainObjectName="StepInstancePO" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
         <!--批处理任务执行表-->
         <table schema="" tableName="T_BATCH_JOB_EXECUTION" domainObjectName="JobExecutionPO" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
         <!--批处理任务执行参数表-->
         <table schema="" tableName="T_BATCH_JOB_EXECUTION_PARAMS" domainObjectName="JobExecutionParamsPO" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <!--批处理步骤执行参数表-->
+        <table schema="" tableName="T_BATCH_STEP_EXECUTION_PARAMS" domainObjectName="StepExecutionParamsPO" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
         <!--批处理步骤执行参数表-->
@@ -54,6 +62,10 @@
         </table>
         <!--批处理步骤执行环境表-->
         <table schema="" tableName="T_BATCH_STEP_EXECUTION_CONTEXT" domainObjectName="StepExecutionContextPO" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <!--批处理FTP表-->
+        <table schema="" tableName="T_BATCH_FTP" domainObjectName="FtpPO" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
 	</context>

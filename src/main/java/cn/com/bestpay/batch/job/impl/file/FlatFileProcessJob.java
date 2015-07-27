@@ -4,18 +4,28 @@
  * Software License version 1.0, a copy of which has been included with this
  * distribution in the LICENSE.txt file.
  *
- * File name:      CommonPostProcessor.java
- * Create on:      2015/7/16 8:58
+ * File name:      FlatFileProcessJob.java
+ * Create on:      2015/7/27 0027 16:28
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/16 8:58               	    袁其亮					    Create
+ * 2015/7/27 0027 16:28               	    袁其亮					    Create
  ************************************************************************************/
-package cn.com.bestpay.batch.commons.job.destroy;
+package cn.com.bestpay.batch.job.impl.file;
 
 
-public class CommonPostProcessor {
+import cn.com.bestpay.batch.commons.context.BatchContext;
+import cn.com.bestpay.batch.job.BatchJob;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
+@Service
+@Scope("protoType")
+public class FlatFileProcessJob implements BatchJob{
+    @Override
+    public void batch(BatchContext batchContext) {
+        System.out.println("batch");
+    }
 }

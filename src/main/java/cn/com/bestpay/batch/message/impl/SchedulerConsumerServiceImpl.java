@@ -25,6 +25,7 @@ import cn.com.bestpay.batch.message.vo.Response;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.support.SimpleJobRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,7 +34,7 @@ import java.util.Map;
 
 @Service
 public class SchedulerConsumerServiceImpl implements ISchedulerConsumerService {
-    @Resource
+    //@Resource
     private JobLauncher jobLauncher;
     @Resource
     private GenericFilterChain batchFilter;
@@ -73,6 +74,7 @@ public class SchedulerConsumerServiceImpl implements ISchedulerConsumerService {
         configAttribute.setFileConfigAttribute(fileConfigAttributes);
         configAttribute.setFtpConfigAttribute(ftpConfigAttribute);
         configAttribute.setFileMap(map);
+        configAttribute.setStepType("0");
         batchFilter.doFilter(configAttribute);
 
         return null;

@@ -34,6 +34,10 @@
     <bean id="ftpProcessFilter"         class="cn.com.bestpay.batch.commons.filter.impl.FtpProcessFilter"/>
     <bean id="fileProcessFilter"        class="cn.com.bestpay.batch.commons.filter.impl.FileProcessFilter"/>
     <bean id="jobExecutionFilterChain"  class="cn.com.bestpay.batch.commons.filter.impl.JobExecutionFilterChain">
-        <property name="jobLauncher" ref="jobLauncher"/>
+        <property name="jobLauncher" ref="jobLauncherImpl"/>
     </bean>
+    <bean id="jobLauncherImpl" class="cn.com.bestpay.batch.service.impl.JobLauncherImpl">
+        <property name="genericFlatFileInvocation" ref="genericFlatFileInvocation"/>
+    </bean>
+    <bean id="genericFlatFileInvocation" class="cn.com.bestpay.batch.job.GenericFlatFileInvocation"/>
 </beans>

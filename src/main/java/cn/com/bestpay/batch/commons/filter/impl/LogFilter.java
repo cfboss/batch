@@ -24,23 +24,31 @@ import cn.com.bestpay.batch.commons.filter.FilterChain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Set;
+
 public class LogFilter implements Filter{
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Override
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
         logger.info("开始处理对账任务,信息:{}", configAttribute.getMessage());
         logger.info("记录FTP信息:{}",configAttribute.getFtpConfigAttribute());
-        logger.info("记录文件信息,文件数量:{}",configAttribute.getFileConfigAttribute().size());
-        for (FileConfigAttribute fc : configAttribute.getFileConfigAttribute()){
-            logger.info("记录文件信息:{}",fc.fileInitData());
+        logger.info("记录文件信息,文件数量:{}",configAttribute.getFileMap().size());
+        logger.info("文件列表:");
+        for (String fileName : configAttribute.getFileMap().keySet()){
+            logger.info(fileName);
         }
-
         chain.doFilter(configAttribute);
 
-        logger.info("记录文件信息,文件数量:{}",configAttribute.getFileConfigAttribute().size());
-        for (FileConfigAttribute fc : configAttribute.getFileConfigAttribute()){
-            logger.info("记录文件信息:{}",fc.fileFinishData());
+        logger.info("记录文件信息,文件数量:{}",configAttribute.getFileMap().size());
+        if (configAttribute.isFileReturn()){
+            logger.info("回盘文件列表:");
+            for (String fileName : configAttribute.getFileMap().values()){
+                logger.info(fileName);
+            }
+        } else {
+            logger.info("本次任务不需要回盘文件");
         }
+
         logger.info("记录文件信息:{}",configAttribute.getFileConfigAttribute().size());
         logger.info("完成对账任务处理,信息:{},开始统计本次处理的数据信息", configAttribute.getMessage());
 
