@@ -5,31 +5,41 @@
  * distribution in the LICENSE.txt file.
  *
  * File name:      Response.java
- * Create on:      2015/3/16 17:44
+ * Create on:      2015年7月16日 15:41:19
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/3/16 17:44               	    袁其亮					    Create
+ * 2015年7月16日 15:41:19            	    袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch.message.vo;
 
 import java.io.Serializable;
 
 /**
- * 对账接口 调用返回
- * Author:  袁其亮
- * Date: 2015年3月16日 17:46:14
+ * <b>DESCRIPTION:</b>响应实体<br/>
+ * <b>Create on:</b>2015年7月16日 15:41:19<br/>
+ *
+ * @author 袁其亮
  */
 public class Response<T> implements Serializable {
     private static final long serialVersionUID = 8350327877975282483L;
 
-    private boolean success;  //表示调用是否成功 ,如果为true,则可以调用getResult,如果为false,则调用errorCode来获取出错信息
+    /**
+     * 表示调用是否成功 ,如果为true,则可以调用getResult,如果为false,则调用errorCode来获取出错信息
+     */
+    private boolean success;
 
-    private T result;  //获取调用返回值
+    /**
+     * 获取调用返回值
+     */
+    private T result;
 
-    private String errorCode; //获取错误码
+    /**
+     * 获取错误码
+     */
+    private String errorCode;
 
     private String errorMsg;
 
@@ -64,6 +74,7 @@ public class Response<T> implements Serializable {
     }
 
     public Response(String errorCode, String errorMsg) {
+        this.success = false;
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
     }

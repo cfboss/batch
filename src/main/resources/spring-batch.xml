@@ -6,12 +6,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         ">
 
-    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean" />
-    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
-        <property name="jobRepository" ref="jobRepository"/>
+    <bean id="jobLauncher" class="cn.com.bestpay.batch.service.impl.JobLauncherImpl">
+        <property name="batchFilter" ref="batchFilter"/>
+        <property name="jobRepository" ref="jobRepositoryImpl" />
     </bean>
-    <bean id="batchTransactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
-
     <!--初始化过滤器链-->
     <bean id="batchFilter" class="cn.com.bestpay.batch.commons.filter.GenericFilterChain">
         <constructor-arg name="additionalFilters">
@@ -33,11 +31,6 @@
     <bean id="contextPersistenceFilter" class="cn.com.bestpay.batch.commons.filter.impl.ContextPersistenceFilter"/>
     <bean id="ftpProcessFilter"         class="cn.com.bestpay.batch.commons.filter.impl.FtpProcessFilter"/>
     <bean id="fileProcessFilter"        class="cn.com.bestpay.batch.commons.filter.impl.FileProcessFilter"/>
-    <bean id="jobExecutionFilterChain"  class="cn.com.bestpay.batch.commons.filter.impl.JobExecutionFilterChain">
-        <property name="jobLauncher" ref="jobLauncherImpl"/>
-    </bean>
-    <bean id="jobLauncherImpl" class="cn.com.bestpay.batch.service.impl.JobLauncherImpl">
-        <property name="genericFlatFileInvocation" ref="genericFlatFileInvocation"/>
-    </bean>
+    <bean id="jobExecutionFilterChain"  class="cn.com.bestpay.batch.commons.filter.impl.JobExecutionFilterChain"/>
     <bean id="genericFlatFileInvocation" class="cn.com.bestpay.batch.job.GenericFlatFileInvocation"/>
 </beans>

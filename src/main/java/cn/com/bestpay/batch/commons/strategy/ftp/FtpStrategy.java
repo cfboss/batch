@@ -59,7 +59,7 @@ public class FtpStrategy extends AbstractBatchStrategy{
     }
 
     private void download(FtpConfigAttribute ftpConfigAttribute) throws FtpException {
-        if ( ftpConfigAttribute.getFtpMode() == 0 ) {
+        if ( ftpConfigAttribute.getFtpMode().equals("0") ) {
             String username = ftpConfigAttribute.getUsername();
             String password = ftpConfigAttribute.getPassword();
             String address = ftpConfigAttribute.getAddress();

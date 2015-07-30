@@ -11,7 +11,7 @@
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/22 0022 13:41               	    袁其亮					    Create
+ * 2015/7/22 0022 13:41               	袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch.commons.filter.impl;
 
@@ -24,7 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MessageFilter implements Filter {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
     @Override

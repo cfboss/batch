@@ -31,6 +31,7 @@ public class GenericFilterChain implements FilterChain {
         this.originalChain = chain;
         this.additionalFilters = additionalFilters;
         this.size = additionalFilters.size();
+        System.out.println(additionalFilters.toString());
     }
 
     @Override

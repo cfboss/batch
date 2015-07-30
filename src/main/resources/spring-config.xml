@@ -22,8 +22,8 @@
     <!--注解扫描的基包-->
     <context:component-scan base-package="cn.com.bestpay.batch"/>
     <!--spring读取属性文件-->
-    <!--<util:properties id="app" location="classpath:jdbc.native.properties" />-->
-    <!--<context:property-placeholder location="classpath*:jdbc.native.properties"/>-->
+    <util:properties id="app" location="classpath:jdbc.native.properties" />
+    <context:property-placeholder location="classpath*:jdbc.native.properties"/>
 
     <tx:annotation-driven/>
 

@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FtpProcessFilter implements Filter{
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
@@ -38,6 +38,7 @@ public class FtpProcessFilter implements Filter{
         //处理文件下载 并将下载的文件放入环境变量
         try{
             fileDownload(configAttribute);
+            logger.info("文件下载成功");
         } catch (FtpException e){
             logger.error("FTP连接文件下载错误");
             throw e;
@@ -58,9 +59,9 @@ public class FtpProcessFilter implements Filter{
     private void fileDownload(ConfigAttribute configAttribute) throws FtpException,FileDownloadException{
         BatchStrategy batchStrategy = null;
         FtpConfigAttribute ftpConfigAttribute = configAttribute.getFtpConfigAttribute();
-        if (ftpConfigAttribute.getFtpType()==0){//类型为 ftp
+        if (ftpConfigAttribute.getFtpType().equals("0")){//类型为 ftp
             batchStrategy = new FtpStrategy();
-        }else if (ftpConfigAttribute.getFtpType()==1){//类型为sftp
+        }else if (ftpConfigAttribute.getFtpType().equals("1")){//类型为sftp
             batchStrategy = new SFtpStrategy();
         } else {
             throw new FtpException("不支持的FTP传输类型");

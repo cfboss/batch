@@ -20,6 +20,7 @@ import cn.com.bestpay.batch.commons.config.ConfigAttribute;
 import cn.com.bestpay.batch.commons.context.BatchContext;
 import cn.com.bestpay.batch.commons.context.BatchContextHolder;
 import cn.com.bestpay.batch.commons.exception.BatchException;
+import cn.com.bestpay.batch.commons.exception.FileDownloadException;
 import cn.com.bestpay.batch.commons.filter.Filter;
 import cn.com.bestpay.batch.commons.filter.FilterChain;
 
@@ -33,7 +34,8 @@ public class ContextPersistenceFilter implements Filter{
         }
         try{
             chain.doFilter(configAttribute);
-
+        } catch (BatchException e) {
+            throw  e;
         } finally {
             //持久化Context到数据库并清除环境
             // todo

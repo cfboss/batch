@@ -15,24 +15,29 @@
  ************************************************************************************/
 package cn.com.bestpay.batch.persistence.service.impl;
 
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.config.FtpConfigAttribute;
+import cn.com.bestpay.batch.persistence.mapper.batch.FtpPOMapper;
+import cn.com.bestpay.batch.persistence.model.FtpPO;
 import cn.com.bestpay.batch.persistence.service.IJobService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Service
 public class JobServiceImpl implements IJobService{
-    public void getJobInstance(String jobKey){
+    @Resource
+    private FtpPOMapper ftpPOMapper;
 
+
+    @Override
+    public FtpPO getFtpPO(String jobInstanceId) {
+        return ftpPOMapper.getFtpByJobId(jobInstanceId);
     }
 
-    public void getJobParams(String jobId){
+    private void wrapFileConfigAttribute(ConfigAttribute configAttribute) {
 
     }
-
-    public void getJobContext(String jobId){
-
-    }
-
-
 
 
 }

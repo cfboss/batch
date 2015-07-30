@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class FileProcessFilter implements Filter{
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Override
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
         logger.info("开始对需要处理的文件进行预处理:");
@@ -47,7 +47,9 @@ public class FileProcessFilter implements Filter{
         chain.doFilter(configAttribute);
         logger.info("开始进行处理后的文件进行后统计");
         try {
-            filePostProcess(configAttribute.getFileConfigAttribute());
+            if (configAttribute.isFileReturn()){
+                filePostProcess(configAttribute.getFileConfigAttribute());
+            }
             logger.info("完成对文件的后处理工作");
         } catch (IOException e) {
             logger.error("文件统计时发生异常");
@@ -65,12 +67,15 @@ public class FileProcessFilter implements Filter{
         for (Map.Entry<String,String> entry: sets){
             String fileName = entry.getKey();
             String fileReturnName = entry.getValue();
-            createReturnFile(directory,fileReturnName);
-            for ( FileConfigAttribute fileConfigAttribute : fileConfigAttributes) {
-                if (fileName.equals(fileConfigAttribute.getFileName())){
-                    fileConfigAttribute.setFileReturnName(fileReturnName);
+            if (fileReturnName!=null){
+                createReturnFile(directory,fileReturnName);
+                for ( FileConfigAttribute fileConfigAttribute : fileConfigAttributes) {
+                    if (fileName.equals(fileConfigAttribute.getFileName())){
+                        fileConfigAttribute.setFileReturnName(fileReturnName);
+                    }
                 }
             }
+
         }
 
     }

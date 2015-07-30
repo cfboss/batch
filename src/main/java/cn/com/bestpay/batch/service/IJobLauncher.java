@@ -6,24 +6,34 @@
  * distribution in the LICENSE.txt file.
  * <p/>
  * File name:      IJobLauncher.java
- * Create on:      2015/7/16 15:28
+ * Create on:      2015年7月15日 15:12:38
  * Author :        袁其亮
  * <p/>
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/16 15:28               	    袁其亮					    Create
+ * 2015年7月15日 15:12:38            	    袁其亮					    Create
  * **********************************************************************************
  */
 
 package cn.com.bestpay.batch.service;
+import cn.com.bestpay.batch.message.vo.BatchReqBo;
+import cn.com.bestpay.batch.message.vo.BatchRspBo;
+import cn.com.bestpay.batch.message.vo.Response;
 
-
-import cn.com.bestpay.batch.commons.config.ConfigAttribute;
-
+/**
+ * <b>DESCRIPTION:</b>批处理任务启动接口<br/>
+ * <b>Create on:</b>2015年7月15日 15:12:38<br/>
+ *
+ * @author 袁其亮
+ */
 public interface IJobLauncher {
-    public void start(ConfigAttribute configAttribute);
-    public void pause(String id);
-    public void stop(String id);
-    public void resume(String id);
+
+    /**
+     * 启动任务
+     * @param batchReqBo 请求实体
+     * @return 响应实体
+     */
+    public Response<BatchRspBo> start(BatchReqBo batchReqBo);
+
 }

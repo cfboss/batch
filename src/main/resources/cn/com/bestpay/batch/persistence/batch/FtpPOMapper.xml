@@ -30,6 +30,14 @@
     LOCAL_PATH, SERVER_PATH, FILE_RETURN_FLAG, CREATE_TIME, CREATE_UID, UPDATE_TIME, 
     UPDATE_UID, CHECK_UID, CHECK_TIME, ARCHIVE_UID, ARCHIVE_TIME, CHECK_FLAG, ARCHIVE_FLAG
   </sql>
+
+    <select id="getFtpByJobId" resultMap="BaseResultMap"  parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM T_BATCH_FTP
+        WHERE JOB_INSTANCE_ID = #{jobInstanceId,jdbcType=VARCHAR}
+    </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

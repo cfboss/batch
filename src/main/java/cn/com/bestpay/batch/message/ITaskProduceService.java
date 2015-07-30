@@ -19,7 +19,7 @@ package cn.com.bestpay.batch.message;
 
 import cn.com.bestpay.batch.message.vo.Response;
 
-public interface ISchedulerProducerService {
+public interface ITaskProduceService {
 
     /**
      * 启动批处理任务

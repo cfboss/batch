@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Set;
 
 public class LogFilter implements Filter{
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Override
     public void doFilter(ConfigAttribute configAttribute, FilterChain chain) throws BatchException {
         logger.info("开始处理对账任务,信息:{}", configAttribute.getMessage());

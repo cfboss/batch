@@ -1,5 +1,8 @@
 package cn.com.bestpay.batch.persistence.service;
 
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.persistence.model.FtpPO;
+
 /**
  * *********************************************************************************
  * Copyright (c) 2015 © Bestpay Co., Ltd.  All Rights Reserved.
@@ -18,4 +21,8 @@ package cn.com.bestpay.batch.persistence.service;
  * **********************************************************************************
  */
 public interface IJobService {
+
+    FtpPO getFtpPO(String jobInstanceId);
+
+
 }

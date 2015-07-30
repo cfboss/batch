@@ -29,16 +29,15 @@ import org.springframework.batch.core.launch.JobLauncher;
 import java.util.List;
 
 public class JobExecutionFilterChain implements FilterChain {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private IJobLauncher jobLauncher;
+    //private IJobLauncher jobLauncher;
     @Override
     public void doFilter(ConfigAttribute configAttribute) throws BatchException {
         logger.info("开始文件处理");
         // 处理文件 调用spring batch框架进行处理
         // todo
-        jobLauncher.start(configAttribute);
-        //jobLauncher.run()
+        //jobLauncher.start(configAttribute);
         List<FileConfigAttribute> configAttributes = configAttribute.getFileConfigAttribute();
         for (FileConfigAttribute config: configAttributes){
             System.out.println(config.getFileReturnName());
@@ -46,7 +45,7 @@ public class JobExecutionFilterChain implements FilterChain {
         logger.info("文件处理完成");
     }
 
-    public void setJobLauncher(IJobLauncher jobLauncher) {
+    /*public void setJobLauncher(IJobLauncher jobLauncher) {
         this.jobLauncher = jobLauncher;
-    }
+    }*/
 }

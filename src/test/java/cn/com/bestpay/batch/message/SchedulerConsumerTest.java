@@ -15,20 +15,39 @@
  ************************************************************************************/
 package cn.com.bestpay.batch.message;
 
+import cn.com.bestpay.batch.message.vo.BatchReqBo;
+import cn.com.bestpay.batch.message.vo.BatchRspBo;
+import cn.com.bestpay.batch.message.vo.Response;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:/spring-config.xml"})
 public class SchedulerConsumerTest {
     @Resource
-    ISchedulerConsumerService schedulerConsumerServiceImpl;
+    ITaskConsumeService schedulerConsumerServiceImpl;
     @Test
     public void testConsumerFilter(){
-        schedulerConsumerServiceImpl.consume("1");
+        BatchReqBo batchReqBo = new BatchReqBo();
+        List<String> fileNames = Lists.newArrayList();
+        fileNames.add("batch-file-1.txt");
+        fileNames.add("batch-file-2.txt");
+        batchReqBo.setFileNames(fileNames);
+        batchReqBo.setJobInstanceId("1");
+        batchReqBo.setFileReturn(false);
+        Response<BatchRspBo> response = schedulerConsumerServiceImpl.consume(batchReqBo);
+        if (response.isSuccess()) {
+            System.out.println(response.getResult());
+        } else {
+            System.out.println(response.getErrorCode());
+            System.out.println(response.getErrorMsg());
+        }
+
     }
 }

@@ -6,24 +6,32 @@
  * distribution in the LICENSE.txt file.
  * <p/>
  * File name:      ISchedulerConsumerService.java
- * Create on:      2015/7/16 15:06
+ * Create on:      2015年7月16日 16:41:19
  * Author :        袁其亮
  * <p/>
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/16 15:06               	    袁其亮					    Create
+ * 2015年7月16日 16:41:19            	    袁其亮					    Create
  * **********************************************************************************
  */
 package cn.com.bestpay.batch.message;
 
+import cn.com.bestpay.batch.message.vo.BatchReqBo;
+import cn.com.bestpay.batch.message.vo.BatchRspBo;
 import cn.com.bestpay.batch.message.vo.Response;
 
-public interface ISchedulerConsumerService {
+/**
+ * <b>DESCRIPTION:</b>批处理受理服务接口<br/>
+ * <b>Create on:</b>2015年7月16日 16:41:19<br/>
+ *
+ * @author 袁其亮
+ */
+public interface ITaskConsumeService {
 
     /**
      * 启动批处理任务
-     * @param jobInstanceId 被调用的任务实例ID
+     * @param batchReqBo 请求实体
      */
-    public Response<String> consume(String jobInstanceId);
+    public Response<BatchRspBo> consume(BatchReqBo batchReqBo);
 }

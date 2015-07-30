@@ -15,6 +15,7 @@
  ************************************************************************************/
 package cn.com.bestpay.batch.service;
 
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
 import cn.com.bestpay.batch.persistence.model.*;
 
 import java.util.List;
@@ -29,5 +30,7 @@ public interface IJobRepository {
     void update(StepExecutionPO stepExecutionPO);
     List<JobExecutionContextPO> getJobContext(String jobId);
     List<StepExecutionContextPO> getStepContext(String stepId);
+
+    ConfigAttribute createConfigAttribute(String jobId);
 
 }

@@ -27,6 +27,8 @@ public class ConfigAttribute {
     private String stepType;
     private int stepOrder;
     private boolean fileReturn;
+    private boolean result;
+    private String code;
     private String message;
 
     public FtpConfigAttribute getFtpConfigAttribute() {
@@ -99,5 +101,21 @@ public class ConfigAttribute {
 
     public void setStepOrder(int stepOrder) {
         this.stepOrder = stepOrder;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
     }
 }

@@ -31,11 +31,11 @@ public class FtpConfigAttribute {
     /**
      * ftp 类型 0:ftp 1:sftp
      */
-    private int ftpType;
+    private String ftpType;
     /**
      * 传输模式 0:被动模式 1:主动模式
      */
-    private int ftpMode;
+    private String ftpMode;
 
     private boolean isDownload;
 
@@ -95,19 +95,19 @@ public class FtpConfigAttribute {
         this.fileNames = fileNames;
     }
 
-    public int getFtpType() {
+    public String getFtpType() {
         return ftpType;
     }
 
-    public void setFtpType(int ftpType) {
+    public void setFtpType(String ftpType) {
         this.ftpType = ftpType;
     }
 
-    public int getFtpMode() {
+    public String getFtpMode() {
         return ftpMode;
     }
 
-    public void setFtpMode(int ftpMode) {
+    public void setFtpMode(String ftpMode) {
         this.ftpMode = ftpMode;
     }
 

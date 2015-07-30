@@ -5,23 +5,41 @@
  * distribution in the LICENSE.txt file.
  *
  * File name:      JobRepositoryImpl.java
- * Create on:      2015/7/27 0027 16:12
+ * Create on:      2015年7月27日 17:04:51
  * Author :        袁其亮
  *
  * ChangeList
  * ----------------------------------------------------------------------------------
  * Date									Editor						ChangeReasons
- * 2015/7/27 0027 16:12               	    袁其亮					    Create
+ * 2015年7月27日 17:04:51               	袁其亮					    Create
  ************************************************************************************/
 package cn.com.bestpay.batch.service.impl;
 
-
+import cn.com.bestpay.batch.commons.config.ConfigAttribute;
+import cn.com.bestpay.batch.commons.config.FtpConfigAttribute;
+import cn.com.bestpay.batch.commons.exception.FtpException;
 import cn.com.bestpay.batch.persistence.model.*;
+import cn.com.bestpay.batch.persistence.service.IJobService;
 import cn.com.bestpay.batch.service.IJobRepository;
-
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * <b>DESCRIPTION:</b>任务仓库实现类<br/>
+ * <b>Create on:</b>2015年7月27日 17:04:51<br/>
+ *
+ * @author 袁其亮
+ */
+@Service
 public class JobRepositoryImpl implements IJobRepository {
+
+    /**
+     * 任务服务类
+     */
+    @Resource
+    private IJobService jobServiceImpl;
+
     @Override
     public JobInstancePO getJobInstance(String jobKey) {
         return null;
@@ -65,5 +83,33 @@ public class JobRepositoryImpl implements IJobRepository {
     @Override
     public List<StepExecutionContextPO> getStepContext(String stepId) {
         return null;
+    }
+
+    @Override
+    public ConfigAttribute createConfigAttribute(String jobId) {
+
+        FtpPO ftpPO = jobServiceImpl.getFtpPO(jobId);
+        if (ftpPO == null) {
+            throw new FtpException("无法获取FTP信息,任务ID: " + jobId) ;
+        }
+        ConfigAttribute configAttribute = new ConfigAttribute();
+        wrapFtpConfigAttribute(configAttribute,ftpPO);
+        return configAttribute;
+
+    }
+
+    private void wrapFtpConfigAttribute(ConfigAttribute configAttribute,FtpPO ftpPO) {
+        FtpConfigAttribute ftpConfigAttribute = new FtpConfigAttribute();
+        ftpConfigAttribute.setUsername(ftpPO.getUsername());
+        ftpConfigAttribute.setPassword(ftpPO.getPassword());
+        ftpConfigAttribute.setAddress(ftpPO.getAddress());
+        ftpConfigAttribute.setPort(ftpPO.getPort());
+        ftpConfigAttribute.setFtpType(ftpPO.getFtpType());
+        ftpConfigAttribute.setFtpMode(ftpPO.getFtpMode());
+        ftpConfigAttribute.setDownload(ftpPO.getFileType().equals("0"));
+        ftpConfigAttribute.setServerPath(ftpPO.getServerPath());
+        ftpConfigAttribute.setLocalPath(ftpPO.getLocalPath());
+        configAttribute.setFtpConfigAttribute(ftpConfigAttribute);
+
     }
 }
